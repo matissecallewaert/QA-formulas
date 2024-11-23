@@ -1,0 +1,132 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{geometry}
+\usepackage{longtable}
+\geometry{a4paper, margin=1in}
+
+\title{Formularium}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Probability theory}
+\renewcommand{\arraystretch}{2} % Increases row height for better readability
+\setlength{\tabcolsep}{8pt}
+\begin{longtable}{| p{7cm} | p{8cm} |}
+    \hline
+    \textbf{Formula} & \textbf{Description} \\ \hline
+    \endfirsthead
+    \hline
+    \textbf{Formula} & \textbf{Description} \\ \hline
+    \endhead
+    \hline
+    \endfoot
+    $F_X(x)= Pr[x \le x]$ & Cumulative distribution function of a random variable, this is non-decreasing and right-continues \\
+    \hline
+    $\lim_{x -> \infty} F_X(x) = 1$ & The normalization condition of this CDF \\
+    \hline
+    $\textnormal{f}_X(x) = \frac{dF_X(x)}{dx} ;\quad \textnormal{f}_X(x)dx = Pr[x < X \le x +dx]$ & The density function, the derivative of the CDF \\
+    \hline
+    $\int_{0}^{\infty}\textnormal{f}_X(x)dx = 1$ & The normalization condition of the density function \\
+    \hline
+    $ p_X(n) = Pr[X = n], n \in \mathbb{N} $ & The probability mass function (discrete RV) \\
+    \hline
+    $ \sum_{n=0}^{\infty} p_X(n) = 1 $ & The normalization function (discrete RV) \\
+    \hline
+    $ F_{XY}(x,y) = Pr[X \le x, Y \le y] \quad x, y \in \mathbb{R}_{\ge 0} $ & joint cumulative distribution function of two random variables \\
+    \hline
+    $ Pr[X \le x, Y \le y] \ne Pr[X \le x] Pr[Y \le y]$, if they are independent RV it is equal, thus $ F_{XY}(x, y) = F_X(x)F_Y(y) ;\quad F_X(x) = F_{XY}(x,\infty);\quad F_Y(y) = F_{XY}(\infty, y) $ & properties of the joint CDF \\
+    \hline
+    $ f_{XY}(x,y) = \frac{\partial^2 F(x, y)}{\partial x \partial y} $ and have that $ f_{XY}(x,y)dxdy = Pr[x < X \le x +dx, y< Y \le y + dy] $ & Joint density function \\
+    \hline
+    $ p_{XY} (n,m) = Pr[X = n, Y = m] $ & joint mass function (discrete RV) \\
+    \hline
+    $ f_{X|Y}(x|y) = \frac{f_{XY}(x, y)}{f_Y(y)} $ and have that $ f_{X|Y}(x|y)dx = Pr[x < X \le x + dx | Y = y] $& Conditional density function \\
+    \hline
+    $ p_{X|Y}(n|m) = Pr[x = n | Y = m] = \frac{p_{XY}(n,m)}{p_Y(m)} $ & Conditional mass function (discrete RV) \\
+    \hline
+    $ E[X] = \int_{0}^{\infty} x dF_X(x) = \int_{0}^{\infty} x f_X(x)dx $ & Mean or expected value of a RV, it is the summary of a complete probability distribution \\
+    \hline
+    $ E[X] = \sum_{n=0}^{\infty} n p_X (n)$ & Mean or expected value of a discrete RV, it is the summary of a complete probability distribution \\
+    \hline
+    $ E[aX + bY] = a E[X] + b E[Y]$ & $E[.]$ is a linear operator \\
+    \hline
+    $ E[XY] = E[X]E[Y]$ & If RV X and Y are independent \\
+    \hline
+    $ Var[X] = E[(X - E[X])^2] = E[X^2] - E[X]^2$ & The variance of a RV \\
+    \hline
+    $ E[X] = E[E[X|Y]]$ & The conditional expectation of X given Y \\
+    \hline
+\end{longtable}
+
+\section{Terminology}
+
+\begin{longtable}{| p{7cm} | p{8cm} |}
+    \hline
+    \textbf{Name} & \textbf{Description}  \\ \hline
+    \endhead
+    \hline
+    \endfoot
+	Arrival instant & The time at which a customer arrives at the queue. \\
+    \hline
+    Service instant & The time at which a customer leaves the system after being served completely. \\
+    \hline
+    Queue content & The number of customers in the queue waiting for service. \\
+    \hline
+    System content & The number of customers in the total system. \\
+    \hline
+    Queue capacity & The maximum number of customers in the queue. \\
+    \hline
+    System capacity & The maximum number of customers in the system. \\
+    \hline
+    Service time & The amount of time that the customer occupies a server. \\
+    \hline
+    Waiting time & The amount of time a customer waits in the queue before starting service. \\
+    \hline
+    Delay or sojourn time & The amount of time a customer resides in the system. \\
+    \hline
+\end{longtable}
+
+\section{Distributions}
+\renewcommand{\arraystretch}{2} % Increases row height for better readability
+\setlength{\tabcolsep}{8pt}
+\begin{longtable}{| p{3cm} | p{7cm} | p{2cm} | p{2cm} |}
+    \hline
+    \textbf{Name} & \textbf{Density Function} & \textbf{Mean} & \textbf{Variance} \\ \hline
+    \endhead
+    \hline
+    \endfoot
+    Binomial & $ Pr[X = k] = \binom{n}{k} p^k(1 - p)^{n-k} $ with $\binom{n}{k} = \frac{n!}{k!(n-k)!} $ & $np$ & $np(1-p)$\\
+    \hline
+    Geometric & $ Pr[X = k] = (1 - p)^{k-1}p $ & $\frac{1}{p}$ & $ \frac{1-p}{p^2} $\\
+    \hline
+    Normal & $ f(x|\mu, \sigma^2) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{(x - \mu)^2}{2 \sigma^2}} $ & $\mu$ & $ \sigma^2 $\\
+    \hline
+    Uniform & $ f(x|a, b) = {\begin{cases}{\frac {1}{b-a}}\quad {\text{for }}a\leq x\leq b,\\[8pt]0 \quad{\text{for }}x<a\ {\text{ or }}\ x>b.\end{cases}} $ & $\frac{a + b}{2} $ & $\frac{(b - a)^2}{12}$ \\
+    \hline
+    Exponential & $ f(x|\lambda) = \lambda e^{- \lambda x}$ & $\frac{1}{\lambda}$ & $\frac{1}{\lambda^2}$ \\
+    \hline
+    Poisson & $ f(k|\lambda) = \frac{e^{-\lambda}\lambda^k}{k!}$ & $\lambda$ & $\lambda$ \\
+    \hline
+\end{longtable}
+
+\subsection{Memoryless property}
+
+\begin{longtable}{| p{7cm} | p{8cm} |}
+    \hline
+    \textbf{Formula} & \textbf{Description}  \\ \hline
+    \endhead
+    \hline
+    \endfoot
+	$ r(t) = \frac{Pr[X \le t +dt | X > t]}{dt} = \frac{x(t)}{1 - X(t)}$ & The hazard rate function of a RV \\
+    \hline
+    $ r(t) = \lambda $ & The hazard rate function of an exponential function \\
+    \hline
+\end{longtable}
+
+\end{document}
