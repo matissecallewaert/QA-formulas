@@ -129,4 +129,74 @@
     \hline
 \end{longtable}
 
+\section{Markov property}
+
+\begin{longtable}{| p{7cm} | p{8cm} |}
+    \hline
+    \textbf{Formula} & \textbf{Description}  \\ \hline
+    \endhead
+    \hline
+    \endfoot
+	$ Pr[X(t) = n | X(t_1)=n_1, \dots, X(t_k)=n_k] = Pr[X(t) = n|X(t_k)=n_k] $ & The Markov property, stating that the futur state only depends on the present state and not on the past states. \\
+    \hline
+\end{longtable}
+
+\section{M/M/1 queue}
+
+\begin{longtable}{| p{7cm} | p{8cm} |}
+    \hline
+    \textbf{Formula} & \textbf{Description}  \\ \hline
+    \endhead
+    \hline
+    \endfoot
+	$ \lambda s(n) = \mu s(n + 1), \quad n = 0,1,2,\dots $ & The local balance equations for the M/M/1 queue\\
+    \hline
+    $ s(n) = \rho^n s(0) $ with $ \rho = \frac{\lambda}{\mu} $ & Recursive solution of the balance equations, with $\rho$ the load on the system. \\
+    \hline
+    $ \sum_{n=0}^{\infty} s(n) = 1 = \sum_{n=0}^{\infty} \rho^n s(0) = \frac{s(0)}{1 - \rho} $ & Using the normalization function, giving us a solution for $s(0)$ \\
+    \hline
+    $ s(0) = 1 - \rho $ & The solution for $s(0)$. \\
+    \hline
+    $ s(n) = (1 - \rho) \rho^n $ & The solution for $s(n)$. \\
+    \hline
+    $ E[S] = \frac{\rho}{1 - \rho} $ & The mean system content of an M/M/1 queue. \\
+    \hline
+    $ Var[S] = \frac{\rho}{(1 - \rho)^2} $ & The variance system content of an M/M/1 queue. \\
+    \hline
+    $ q(0) = s(0) + s(1) $ & The queue content, when no customer in the queue, we have either situation where there is no customer in the system or one customer that is being served. \\
+    \hline
+    $ q(n) = s(n+1), \quad n=1,2,\dots $ & When there are customers in the system, the queue has one less than the system. \\
+    \hline
+    $ q(0) = 1 - \rho^2, \quad q(n) = (1 - \rho) \rho^{n+1} \quad n=1,2,\dots$ & Filled in using previous formulas. \\
+    \hline
+    $ E[Q] = \frac{\rho^2}{1 - \rho} $ & The mean queue content. \\
+    \hline
+    $ Var[Q] = \frac{\rho^2}{(1 - \rho)^2}(1 + \rho - \rho^2) $ & The variance of the queue content. \\
+    \hline
+\end{longtable}
+
+\section{The generic BD-Queueing system}
+\renewcommand{\arraystretch}{3} % Increases row height for better readability
+\begin{longtable}{| p{9cm} | p{6cm} |}
+    \hline
+    \textbf{Formula} & \textbf{Description}  \\ \hline
+    \endhead
+    \hline
+    \endfoot
+	$ \lambda_n s(n) = \mu_{n+1} s(n + 1) $ & The local balance equations for a generic Birth-death queue.\\
+    \hline
+    $ s(n) = s(0) \prod_{m=0}^{n-1} \frac{\lambda_m}{\mu_{m+1}} $ & The local balance equations recursively solved.\\
+    \hline
+    $ \sum_{n=0}^{\infty}s(n) = 1 = s(0)(1 + \sum_{n=1}^{\infty}\prod_{m = 0}^{n-1}\frac{\lambda_m}{\mu_{m+1}}) $ & Using the normalization property, we get an extra equation. \\
+    \hline
+    $ s(0) = (1 + \sum_{l=1}^{\infty}\prod_{m = 0}^{l-1}\frac{\lambda_m}{\mu_{m+1}})^{-1} $ & Solution for s(0). \\
+    \hline
+    $ s(n) = \frac{\prod_{m=0}^{n-1}\frac{\lambda_m}{\mu_{m+1}}}{1 + \sum_{l=1}^{\infty}\prod_{m = 0}^{l-1}\frac{\lambda_m}{\mu_{m+1}}} $ & Solution for s(n). \\
+    \hline
+    $ E[S] = \sum_{n=1}^{\infty} n \frac{\prod_{m=0}^{n-1}\frac{\lambda_m}{\mu_{m+1}}}{1 + \sum_{l=1}^{\infty}\prod_{m = 0}^{l-1}\frac{\lambda_m}{\mu_{m+1}}} $ & Mean system content. \\
+    \hline
+    $ Var[S] = \sum_{n=1}^{\infty} n^2 \frac{\prod_{m=0}^{n-1}\frac{\lambda_m}{\mu_{m+1}}}{1 + \sum_{l=1}^{\infty}\prod_{m = 0}^{l-1}\frac{\lambda_m}{\mu_{m+1}}} - (\sum_{n=1}^{\infty} n \frac{\prod_{m=0}^{n-1}\frac{\lambda_m}{\mu_{m+1}}}{1 + \sum_{l=1}^{\infty}\prod_{m = 0}^{l-1}\frac{\lambda_m}{\mu_{m+1}}} )^2 $ & Mean system content. \\
+    \hline
+\end{longtable}
+
 \end{document}
