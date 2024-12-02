@@ -197,6 +197,50 @@
     \hline
     $ Var[S] = \sum_{n=1}^{\infty} n^2 \frac{\prod_{m=0}^{n-1}\frac{\lambda_m}{\mu_{m+1}}}{1 + \sum_{l=1}^{\infty}\prod_{m = 0}^{l-1}\frac{\lambda_m}{\mu_{m+1}}} - (\sum_{n=1}^{\infty} n \frac{\prod_{m=0}^{n-1}\frac{\lambda_m}{\mu_{m+1}}}{1 + \sum_{l=1}^{\infty}\prod_{m = 0}^{l-1}\frac{\lambda_m}{\mu_{m+1}}} )^2 $ & Mean system content. \\
     \hline
+    $ \sum_{n=1}^{\infty} \prod_{m=0}^{n-1} \frac{\lambda_m}{\mu_{m+1}} $ & Stability condition, this converges when the system is stable. \\
+    \hline
+\end{longtable}
+
+\section{The M/M/c queue}
+\renewcommand{\arraystretch}{3} % Increases row height for better readability
+\begin{longtable}{| p{9cm} | p{6cm} |}
+    \hline
+    \textbf{Formula} & \textbf{Description}  \\ \hline
+    \endhead
+    \hline
+    \endfoot
+    $ s(n) = {\begin{cases}{s(0)\frac {(c \rho)^n}{n!}}\quad {\text{for }} n\le c ,\\[8pt] s(0) \frac{(c\rho)^c}{c!}\rho^{n-c} \quad{\text{for }} n>c.\end{cases}} $ & System content probabilities. \\
+    \hline
+    $ s(0) = (\sum_{l=0}^{c-1}\frac{(c\rho)^l}{l!} + \frac{(c\rho)^c}{c!}\frac{1}{1- \rho}) $ & Normalization condition.\\
+    \hline
+    $ \rho = \frac{\lambda}{c*\mu} < 1 $ & Stability condition. \\
+    \hline
+    $ p^Q  = (\sum_{l=0}^{c-1}\frac{(c\rho)^l}{l!} + \frac{(c\rho)^c}{c!}\frac{1}{1- \rho})^{-1} \frac{(c\rho)^c}{c!}\frac{1}{1 - \rho} $ & Erlang C formula. It is the probability that an arriving customer has to wait. \\
+    \hline
+    $ E[Q] = p^Q \frac{\rho}{1 - \rho} $ & Mean queue content. \\
+    \hline
+    $ E[S] = p^Q \frac{\rho}{1 - \rho} + c\rho $ & Mean system content. \\
+    \hline
+    $ c\rho $ & Average number of customer being served in the system. \\
+    \hline
+\end{longtable}
+
+\section{The M/M/1/K queue}
+
+\begin{longtable}{| p{9cm} | p{6cm} |}
+    \hline
+    \textbf{Formula} & \textbf{Description}  \\ \hline
+    \endhead
+    \hline
+    \endfoot
+    $ n = 1, \ldots, K $ & For all formulas. \\
+    \hline
+    $ s(n) = \frac{1 - \rho}{1 - \rho^{K+1}} \rho^n $ & System content probabilities. \\
+    \hline
+    $ E[S] = \frac{\rho}{1 - \rho} \frac{1 - (K(1-\rho) + 1)\rho^K}{1 - \rho^{K+1}} $ & System content probabilities. \\
+    \hline
+    $ l_p = \frac{1 - \rho}{1 - \rho^{K+1}} \rho^K $ & Loss rate or loss probability. \\
+    \hline
 \end{longtable}
 
 \end{document}
