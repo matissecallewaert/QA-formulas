@@ -113,6 +113,8 @@
     \hline
     Poisson & $ f(k|\lambda) = \frac{e^{-\lambda}\lambda^k}{k!}$ & $\lambda$ & $\lambda$ \\
     \hline
+    Erlang & $ f_N(x) = \frac{\mu^N x^{N-1} e^{-\mu x}}{(N - 1)!}$ & $N\frac{1}{\mu}$ & $N\frac{1}{\mu^2}$ \\
+    \hline
 \end{longtable}
 
 \subsection{Memoryless property}
@@ -173,6 +175,8 @@
     \hline
     $ Var[Q] = \frac{\rho^2}{(1 - \rho)^2}(1 + \rho - \rho^2) $ & The variance of the queue content. \\
     \hline
+    $ E[in] = E[out] $ & Operational law \\
+    \hline
 \end{longtable}
 
 \section{The generic BD-Queueing system}
@@ -201,6 +205,7 @@
     \hline
 \end{longtable}
 
+\newpage
 \section{The M/M/c queue}
 \renewcommand{\arraystretch}{3} % Increases row height for better readability
 \begin{longtable}{| p{9cm} | p{6cm} |}
@@ -241,6 +246,51 @@
     \hline
     $ l_p = \frac{1 - \rho}{1 - \rho^{K+1}} \rho^K $ & Loss rate or loss probability. \\
     \hline
+    $ \lambda(1 - l_p) = \mu(1 - s(0)) $ & The operational law. \\
+    \hline
+    $ l_p = 1 - \frac{1 - s(0)}{\rho} $ with $ \rho \ge 1 \rightarrow l_p \ge 1 - \frac{1}{\rho} $ & Alternative solution for the loss. \\
+    \hline
+    $ \lambda_{eff} = \lambda(1 - l_p) $ and $ \rho_{eff} = \rho (1 - l_p) $ & The effective arrival rate and effective load. \\
+    \hline
 \end{longtable}
 
+\section{Waiting time and delay}
+
+\begin{longtable}{| p{9cm} | p{6cm} |}
+    \hline
+    \textbf{Formula} & \textbf{Description}  \\ \hline
+    \endhead
+    \hline
+    \endfoot
+    $ D = \sum_{n=1}^{S^A + 1} B_n $ & The delay is equal to all the service times of the customers in the system when the tagged customer arrives plus the service time of that tagged customer. \\
+    \hline
+    $ Pr[D \le t] = E[Pr[D \le t | S^A]] = \sum_{m=0}^{\infty} Pr[D \le t | S^A = m] Pr[S^A = m] $ & The law of total probability. \\
+    \hline
+    $ Pr[D \le t | S^A] = 1 - \sum_{n=0}^{S^A} \frac{1}{n!} e^{- \mu t} (\mu t)^n  $ & Delay is Erlang distributed with $ S^A + 1 $ stages and rate $\mu$ \\
+    \hline
+    $ Pr[S^A = m] = s(m) = (1 - \rho) \rho^m $ & Using PASTA for the stationary distribution of the system. \\
+    \hline
+    $ Pr[D \le t] = 1 - e^{-(\mu - \lambda)t} $ & Going further on the law of total probability we derive that the delay is exponentially distributed with rate $\mu - \lambda$. So Delay is memoryless. \\
+    \hline
+    $ E[D] = \frac{1}{\mu - \lambda} $ & The mean delay. \\
+    \hline
+    $ Var[D] = \frac{1}{(\mu - \lambda)^2} $ & The variance of the delay. \\
+    \hline
+    $ E[D] = \frac{1}{\lambda} E[S] $ & Little's law. \\
+    \hline
+    $ E[W] = \frac{1}{\lambda}E[Q] $ & The mean waiting time in relation to the mean queue content. \\
+    \hline
+    $ Var[W] = \frac{\rho(2-\rho)}{(\mu - \lambda)^2} $ & The variance of the waiting time. \\
+    \hline
+\end{longtable}
+
+\section{Little's law}
+
+Little's law states that the average number of customers in a stationary system is equal to the average arrival rate times the average time a customer spends in the system.
+
+This is valid for all queueing systems! For $\lambda < \infty$, $ \overline{D} < \infty $ and $ \overline{S} < \infty $.
+
+\[ \overline{S} = \lambda \overline{D} \]
+
+Make sure that for example in finite systems, the effective arrival rate $\lambda_{eff}$ is used.
 \end{document}
